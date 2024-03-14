@@ -1,3 +1,5 @@
+package Easy
+
 func maxFrequencyElements(nums []int) int {
 	dictionary := make(map[int]int)
 
