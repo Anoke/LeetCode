@@ -1,10 +1,5 @@
 package main
 
-import (
-	"LeetCode/Easy"
-	"fmt"
-)
-
 func numSubarraysWithSum(nums []int, goal int) int {
 	totalCount := 0
 	currentSum := 0
@@ -22,8 +17,31 @@ func numSubarraysWithSum(nums []int, goal int) int {
 	return totalCount
 }
 
-func main() {
-	nums := []int{1, 0, 1, 0, 1}
-	fmt.Println(numSubarraysWithSum(nums, 2))
-	fmt.Println(Easy.RomanToInt("VII"))
-}
+//
+//type Person struct {
+//	Name  string
+//	Phone string
+//}
+//
+//func sleep(seconds int) {
+//	<-time.After(time.Duration(seconds) * time.Second)
+//}
+//func main() {
+//	var a, b int32 = math.MaxInt32, 1
+//	sum := a + b
+//	if (a > 0 && b > 0 && sum < 0) || (a < 0 && b < 0 && sum > 0) {
+//		fmt.Println("Произошло переполнение!")
+//	} else {
+//		fmt.Println("Результат сложения:", sum)
+//	}
+//}
+//
+//// Функция для безопасного сложения двух int32 с проверкой на переполнение
+//func safeAdd(a, b int32) (int32, bool) {
+//	sum := a + b
+//	if (a > 0 && b > 0 && sum < 0) || (a < 0 && b < 0 && sum > 0) {
+//		fmt.Println("Произошло переполнение!")
+//	} else {
+//		fmt.Println("Результат сложения:", sum)
+//	}
+//}
