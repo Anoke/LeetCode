@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"LeetCode/Easy"
+	"fmt"
+)
 
 func numSubarraysWithSum(nums []int, goal int) int {
 	totalCount := 0
@@ -22,4 +25,5 @@ func numSubarraysWithSum(nums []int, goal int) int {
 func main() {
 	nums := []int{1, 0, 1, 0, 1}
 	fmt.Println(numSubarraysWithSum(nums, 2))
+	fmt.Println(Easy.RomanToInt("VII"))
 }

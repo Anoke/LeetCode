@@ -1,6 +1,6 @@
 package Easy
 
-func romanToInt(s string) int {
+func RomanToInt(s string) int {
 	totalSum := 0
 	romanMap := map[rune]int{
 		'I': 1,

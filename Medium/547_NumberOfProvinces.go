@@ -7,7 +7,7 @@ func findCircleNum(isConnected [][]int) int {
 
 	for i := 0; i < n; i++ {
 		if !visited[i] {
-			dfs(isConnected, visited, i)
+			dfs_1(isConnected, visited, i)
 			proviences++
 		}
 	}
@@ -15,12 +15,12 @@ func findCircleNum(isConnected [][]int) int {
 	return proviences
 }
 
-func dfs(isConnected [][]int, visited []bool, city int) {
+func dfs_1(isConnected [][]int, visited []bool, city int) {
 	visited[city] = true
 
 	for neighbour := 0; neighbour < len(isConnected); neighbour++ {
 		if !visited[neighbour] && isConnected[city][neighbour] == 1 {
-			dfs(isConnected, visited, neighbour)
+			dfs_1(isConnected, visited, neighbour)
 		}
 	}
 }
