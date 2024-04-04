@@ -1,7 +1,5 @@
 package main
 
-import "fmt"
-
 func findMaxLength(nums []int) int {
 	mapa := make(map[int]int)
 	mapa[0] = -1
@@ -27,8 +25,4 @@ func max(a, b int) int {
 		return a
 	}
 	return b
-}
-
-func main() {
-	fmt.Println(findMaxLength([]int{0, 1}))
 }
