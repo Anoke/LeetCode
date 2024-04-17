@@ -1,59 +1,62 @@
 package main
 
-import "LeetCode/Easy"
+import "fmt"
 
-/**
-* Definition for singly-linked list.
-* type ListNode struct {
-*     Val int
-*     Next *ListNode
-* }
- */
-func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
-	dummy := &ListNode{}
-	cur := dummy
-	carry := 0
-
-	for l1 != nil || l2 != nil || carry != 0 {
-		v1, v2 := 0, 0
-		if l1 != nil {
-			v1 = l1.Val
-			l1 = l1.Next
-		}
-		if l2 != nil {
-			v2 = l2.Val
-			l2 = l2.Next
-		}
-
-		sum := v1 + v2 + carry
-		carry = sum / 10
-		cur.Next = &ListNode{Val: sum % 10}
-		cur = cur.Next
+func solution(n int, nums []int) int {
+	left := 0
+	maxFives := 0
+	currentFive := 0
+	currentDays := 0
+	if n < 7 {
+		return -1
 	}
+	for right := 0; right < n; right++ {
+		currentDays = right - left + 1
+		if currentDays <= 7 {
+			if nums[right] == 5 {
+				currentFive++
+			}
+			continue
+		}
+		if !contains(nums[left:right+1], 2) && !contains(nums[left:right+1], 3) {
+			if currentFive > maxFives {
+				maxFives = currentFive
+			}
+		}
+		if nums[left] == 5 {
+			currentFive--
+		}
+		left++
+		if nums[right] == 5 {
+			currentFive++
+		}
+		right++
 
-	return dummy.Next
+	}
+	if maxFives == 0 {
+		return -1
+	}
+	return currentFive
 }
-func isIsomorphic(s string, t string) bool {
-	if len(s) != len(t) {
-		return false
-	}
 
-	map1 := make([]int, 128)
-	map2 := make([]int, 128)
-
-	for i := 0; i < len(s); i++ {
-		sch := s[i]
-		tch := t[i]
-
-		if map1[sch] == 0 && map2[tch] == 0 {
-			map1[sch] = int(tch)
-			map2[tch] = int(sch)
-		} else if map1[sch] != int(tch) || map2[tch] != int(sch) {
-			return false
+func contains(nums []int, target int) bool {
+	for _, num := range nums {
+		if num == target {
+			return true
 		}
 	}
-	return true
+	return false
 }
+
 func main() {
-	Easy.RomanToInt("IV")
+	var n int
+	fmt.Scan(&n)
+
+	nums := make([]int, n)
+	for i := 0; i < n; i++ {
+		fmt.Scan(&nums[i])
+	}
+
+	fmt.Println(solution(n, nums))
+
 }
